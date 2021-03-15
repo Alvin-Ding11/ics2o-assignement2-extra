@@ -6,16 +6,16 @@ namespace SpriteKind {
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.uprightmineral, function (sprite, otherSprite) {
     mineral4.destroy(effects.disintegrate, 200)
-    info.changeScoreBy(100)
+    info.changeScoreBy(200)
     music.baDing.play()
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.BEGINmineral, function (sprite, otherSprite) {
     mineral2.destroy(effects.disintegrate, 200)
-    info.changeScoreBy(100)
+    info.changeScoreBy(200)
     music.baDing.play()
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile12`, function (sprite, location) {
-    info.changeScoreBy(-1000)
+    info.changeScoreBy(-400)
     info.changeLifeBy(-1)
     music.spooky.playUntilDone()
     game.over(false)
@@ -26,18 +26,18 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sp
     game.over(true)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Minerals, function (sprite, otherSprite) {
-    Minerals.destroy(effects.disintegrate, 200)
+    Minerals2.destroy(effects.disintegrate, 200)
     info.changeScoreBy(500)
     music.baDing.play()
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.rightcornermineral, function (sprite, otherSprite) {
     mineral3.destroy(effects.disintegrate, 200)
-    info.changeScoreBy(100)
+    info.changeScoreBy(200)
     music.baDing.play()
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     Mineral1.destroy(effects.disintegrate, 200)
-    info.changeScoreBy(100)
+    info.changeScoreBy(200)
     music.baDing.play()
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile10`, function (sprite, location) {
@@ -51,8 +51,41 @@ let mineral4: Sprite = null
 let mineral3: Sprite = null
 let mineral2: Sprite = null
 let Mineral1: Sprite = null
-let Minerals: Sprite = null
+let Minerals2: Sprite = null
 let Player_Miner: Sprite = null
+for (let index = 0; index < 1; index++) {
+    game.setDialogFrame(img`
+        ..ffffffffffffffffffff..
+        .fd111111111111111111df.
+        fd1d2222222222222222d1df
+        f1d222222222222222222d1f
+        f12d1111111111111111d21f
+        f1211111111111111111121f
+        f1211111111111111111121f
+        f1211111111111111111121f
+        f1211111111111111111121f
+        f1211111111111111111121f
+        f1211111111111111111121f
+        f1211111111111111111121f
+        f1211111111111111111121f
+        f1211111111111111111121f
+        f1211111111111111111121f
+        f1211111111111111111121f
+        f1211111111111111111121f
+        f1211111111111111111121f
+        f1211111111111111111121f
+        f12d1111111111111111d21f
+        fd12222222222222222221df
+        ffd111111111111111111dff
+        .ffffffffffffffffffffff.
+        ..ffffffffffffffffffff..
+        `)
+    game.setDialogCursor(assets.tile`myTile5`)
+    game.showLongText("Move with arrow keys(or WASD", DialogLayout.Center)
+    game.showLongText("There are 5 crystals to find inside the cave", DialogLayout.Center)
+    game.showLongText("Avoid the spiked mines planted by your enemies. Watch out! They reach farther than you think!", DialogLayout.Center)
+    game.showLongText("How do you win you ask? Explore. ", DialogLayout.Center)
+}
 info.setLife(1)
 scene.setBackgroundImage(img`
     bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
@@ -194,8 +227,8 @@ Player_Miner = sprites.create(img`
     . . . . . f f f f f f . . . . . 
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Player)
-Player_Miner.setPosition(135, 380)
-Minerals = sprites.create(img`
+Player_Miner.setPosition(630, 790)
+Minerals2 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -213,7 +246,7 @@ Minerals = sprites.create(img`
     . . . 6 6 9 9 9 9 9 6 . . . . . 
     . . . . 6 9 9 9 9 9 6 . . . . . 
     `, SpriteKind.Minerals)
-Minerals.setPosition(70, 40)
+Minerals2.setPosition(70, 40)
 Mineral1 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -232,7 +265,7 @@ Mineral1 = sprites.create(img`
     . . . 6 6 9 9 9 9 9 6 . . . . . 
     . . . . 6 9 9 9 9 9 6 . . . . . 
     `, SpriteKind.Food)
-Mineral1.setPosition(88, 83)
+Mineral1.setPosition(552, 245)
 mineral2 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -251,7 +284,7 @@ mineral2 = sprites.create(img`
     . . . 6 6 9 9 9 9 9 6 . . . . . 
     . . . . 6 9 9 9 9 9 6 . . . . . 
     `, SpriteKind.BEGINmineral)
-mineral2.setPosition(55, 340)
+mineral2.setPosition(775, 535)
 mineral3 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -270,7 +303,7 @@ mineral3 = sprites.create(img`
     . . . 6 6 9 9 9 9 9 6 . . . . . 
     . . . . 6 9 9 9 9 9 6 . . . . . 
     `, SpriteKind.rightcornermineral)
-mineral3.setPosition(345, 340)
+mineral3.setPosition(630, 693)
 mineral4 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -289,7 +322,7 @@ mineral4 = sprites.create(img`
     . . . 6 6 9 9 9 9 9 6 . . . . . 
     . . . . 6 9 9 9 9 9 6 . . . . . 
     `, SpriteKind.uprightmineral)
-mineral4.setPosition(265, 38)
+mineral4.setPosition(40, 742)
 tiles.setTilemap(tilemap`Tilemap 1`)
 scene.cameraFollowSprite(Player_Miner)
 controller.moveSprite(Player_Miner, 60, 60)
