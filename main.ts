@@ -323,7 +323,7 @@ mineral4 = sprites.create(img`
     . . . . 6 9 9 9 9 9 6 . . . . . 
     `, SpriteKind.uprightmineral)
 mineral4.setPosition(40, 742)
-tiles.setTilemap(tilemap`Tilemap 1`)
+tiles.setTilemap(tilemap`level3`)
 scene.cameraFollowSprite(Player_Miner)
 controller.moveSprite(Player_Miner, 60, 60)
 forever(function () {
